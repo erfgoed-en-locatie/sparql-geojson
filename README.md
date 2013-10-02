@@ -43,9 +43,9 @@ Roadmap
 -------
 **Milestone: 0.1**
 
-Extracts datatype <http://www.opengis.net/ont/geosparql#wktLiteral> from a SPARQL/JSON object and returns GeoJSON output only as EPSG:4326/urn:ogc:def:crs:OGC:1.3:CRS84 geometries. Ignores all other Sparql/JSON data, no feature attributes other than geometries are returned. Has JQuery dependency.
+Extracts datatype <http://www.opengis.net/ont/geosparql#wktLiteral> from a SPARQL/JSON object and returns GeoJSON output only as EPSG:4326/urn:ogc:def:crs:OGC:1.3:CRS84 geometries. Ignores all other Sparql/JSON data, no feature attributes other than geometries are returned. 
 
 **Milestone: 0.2**
 
-Extracts datatype <http://www.opengis.net/ont/geosparql#wktLiteral> and <http://www.w3.org/2003/01/geo/wgs84_pos#> from a SPARQL/JSON object and returns GeoJSON output only as EPSG:4326/urn:ogc:def:crs:OGC:1.3:CRS84 geometries. Ignores all other Sparql/JSON data, no feature attributes other than geometries are returned. Has JQuery dependency.
+Extracts datatype <http://www.opengis.net/ont/geosparql#wktLiteral> and <http://www.w3.org/2003/01/geo/wgs84_pos#> from a SPARQL/JSON object and returns GeoJSON output only as EPSG:4326/urn:ogc:def:crs:OGC:1.3:CRS84 geometries. Ignores all other Sparql/JSON data, no feature attributes other than geometries are returned. 
 
