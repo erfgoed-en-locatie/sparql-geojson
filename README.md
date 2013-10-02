@@ -27,12 +27,14 @@ projection: optional, either empty, null or integer.
 Default (empty) is urn:ogc:def:crs:OGC:1.3:CRS84 as specified for GeoJSON. 
 JSON null specifies that no known projection method is used. No crs clause is specified in the GeoJSON output.
 If otherwise specified, projection refers to the EPSG projection identifier. For example, if for projection value 28992 is given, the GeoJSON object will have a named CRS as follows:
+```sh
 "crs": {
   "type": "name",
   "properties": {
     "name": "urn:ogc:def:crs:EPSG::28992"
     }
   }
+```
 Output
 ------
 SPARQL-GeoJSON returns the sparql/json input as a GeoJSON object according to the specified format.
