@@ -56,17 +56,14 @@ function sparqlToGeoJSON(sparqlJSON) {
         "type": "FeatureCollection",
             "features": []
     };
-    //oops, still jquery!
-    $.each(sparqlJSON.results.bindings, function (index, bs) {
-        //oops, still jquery!
-        $.each(sparqlJSON.head.vars, function (key, varname) {
-            if (bs[varname].datatype == "http://www.opengis.net/ont/geosparql#wktLiteral") {
-                //assumes the well-known text is valid!
-                geojson.features.push(wktToGeoJSON(bs[varname].value));
-            }
-         });
-     });
-
-    return geojson;
     
+    for (var bindingindex = 0; bindingindex < sparqlJSON.results.bindings.length; ++bindingindex) {
+        for (var varindex = 0; varindex < sparqlJSON.head.vars.length; ++varindex) {
+            if (sparqlJSON.results.bindings[bindingindex][sparqlJSON.head.vars[varindex]].datatype == "http://www.opengis.net/ont/geosparql#wktLiteral") {
+                //assumes the well-known text is valid!
+                geojson.features.push(wktToGeoJSON(sparqlJSON.results.bindings[bindingindex][sparqlJSON.head.vars[varindex]].value));
+            }
+        }
+    }
+    return geojson;
 }
