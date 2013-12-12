@@ -13,10 +13,22 @@ function sparqlToGeoJSON(sparqlJSON) {
                                 //assumes the well-known text is valid!
                                 wkt = sparqlJSON.results.bindings[bindingindex][sparqlJSON.head.vars[varindex]].value;
 
-                                //find substring left of first "(" occurrence
+                                //chop off geometry type, already have that
+                                coordinates = wkt.substr(wkt.indexOf("("), wkt.length);
+                                //add extra [ and replace ( by [ 
+                                coordinates = "[" + coordinates.split("(").join("[");
+                                //replace ) by ] and add extra ]
+                                coordinates = coordinates.split(")").join("]") + "]";
+                                //replace , by ],[
+                                coordinates = coordinates.split(",").join("],[");
+                                //replace spaces with ,
+                                coordinates = coordinates.split(" ").join(",");
+
+                                //find substring left of first "(" occurrence for geometry type
                                 switch (wkt.substr(0, wkt.indexOf("("))) {
                                 case "POINT":
                                         geometryType = "Point";
+					coordinates = coordinates.substr(1, coordinates.length - 2); //remove redundant [ and ] at beginning and end
                                         break;
                                 case "MULTIPOINT":
                                         geometryType = "MultiPoint";
@@ -41,16 +53,6 @@ function sparqlToGeoJSON(sparqlJSON) {
                                         return {};
                                 }
 
-                                //chop off geometry type, already have that
-                                coordinates = wkt.substr(wkt.indexOf("("), wkt.length);
-                                //add extra [ and replace ( by [ 
-                                coordinates = "[" + coordinates.split("(").join("[");
-                                //replace ) by ] and add extra ]
-                                coordinates = coordinates.split(")").join("]") + "]";
-                                //replace , by ],[
-                                coordinates = coordinates.split(",").join("],[");
-                                //replace spaces with ,
-                                coordinates = coordinates.split(" ").join(",");
 
                                 var feature = {
                                         "type": "Feature",
