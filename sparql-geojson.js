@@ -9,7 +9,7 @@ function sparqlToGeoJSON(sparqlJSON) {
 
         for (bindingindex = 0; bindingindex < sparqlJSON.results.bindings.length; ++bindingindex) {
                 for (varindex = 0; varindex < sparqlJSON.head.vars.length; ++varindex) {
-                        if (sparqlJSON.results.bindings[bindingindex][sparqlJSON.head.vars[varindex]].datatype === "http://www.opengis.net/ont/geosparql#wktLiteral") {
+                        if (sparqlJSON.results.bindings[bindingindex][sparqlJSON.head.vars[varindex]] && sparqlJSON.results.bindings[bindingindex][sparqlJSON.head.vars[varindex]].datatype === "http://www.opengis.net/ont/geosparql#wktLiteral") {
                                 //assumes the well-known text is valid!
                                 wkt = sparqlJSON.results.bindings[bindingindex][sparqlJSON.head.vars[varindex]].value;
 
