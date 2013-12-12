@@ -44,13 +44,13 @@ function sparqlToGeoJSON(sparqlJSON) {
 				//chop off geometry type, already have that
 				coordinates = wkt.substr(wkt.indexOf("("), wkt.length);
 				//add extra [ and replace ( by [ 
-				if (geometryType != "Point") {
+				if (geometryType !== "Point") {
 					coordinates = "[";
 				}
 				coordinates += coordinates.split("(").join("[");
 				//replace ) by ] and add extra ]
 				coordinates = coordinates.split(")").join("]");
-				if (geometryType != "Point") {
+				if (geometryType !== "Point") {
 					coordinates += "]";
 				}
 				//replace , by ],[
