@@ -33,8 +33,8 @@ function sparqlToGeoJSON(sparqlJSON) {
                                 case "MULTIPOINT":
                                         geometryType = "MultiPoint";
                                         break;
-                                case "LINE":
-                                        geometryType = "Line";
+                                case "LINESTRING":
+                                        geometryType = "Linestring";
                                         break;
                                 case "MULTILINE":
                                         geometryType = "MultiLine";
