@@ -58,7 +58,7 @@ function sparqlToGeoJSON(sparqlJSON) {
                                         "type": "Feature",
                                         "geometry": {
                                                 "type": geometryType,
-                                                "coordinates": eval('(' + coordinates + ')')
+                                                "coordinates": JSON.parse(coordinates)
                                         },
                                         "properties": sparqlJSON.results.bindings[bindingindex]
                                 };
